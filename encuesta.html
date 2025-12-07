@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Cuidado de la Piel</title>
+
+    <style>
+    
+        <button>
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-pink" style="background-color: #f8c4d8;">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="#">Belleza & Estilo</a>
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+        body {
+            background-color: #fff6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #444;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #a73363;
+            background-color: #f8c4d8;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        form {
+            background: #f8c4d8;
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            margin: 30px auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label, p {
+            color: #5c3d4f;
+            font-size: 1.05em;
+        }
+
+        input, select, textarea {
+            width: 95%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #c299a9;
+            border-radius: 8px;
+        }
+
+        .boton {
+            display: inline-block;
+            background-color: #c04275;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .boton:hover {
+            background-color: #ff5b9f;
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Encuesta: Hábitos de Cuidado de la Piel</h1>
+
+    <form>
+
+        <p>1. ¿Cuál es tu nombre?</p>
+        <input type="text" name="nombre" required>
+
+        <p>2. ¿Cuántos años tienes?</p>
+        <input type="number" name="edad" min="10" max="100">
+
+        <p>3. ¿Cómo describirías tu tipo de piel?</p>
+        <select name="tipo_piel">
+            <option>Grasa</option>
+            <option>Seca</option>
+            <option>Mixta</option>
+            <option>Sensible</option>
+        </select>
+
+        <p>4. ¿Te lavas la cara diariamente?</p>
+        <label><input type="radio" name="lavado" value="si"> Sí</label><br>
+        <label><input type="radio" name="lavado" value="no"> No</label><br>
+
+        <p>5. ¿Qué productos usas con más frecuencia?</p>
+        <label><input type="checkbox" name="productos" value="limpiador"> Limpiador facial</label><br>
+        <label><input type="checkbox" name="productos" value="hidratante"> Hidratante</label><br>
+        <label><input type="checkbox" name="productos" value="protector"> Protector solar</label><br>
+        <label><input type="checkbox" name="productos" value="exfoliante"> Exfoliante</label><br>
+        <label><input type="checkbox" name="productos" value="serum"> Sérum</label><br>
+
+        <p>6. ¿Con qué frecuencia exfolias tu piel?</p>
+        <select name="exfoliacion">
+            <option>1 vez a la semana</option>
+            <option>2-3 veces a la semana</option>
+            <option>Rara vez</option>
+        </select>
+
+        <p>7. ¿Usas protector solar diariamente?</p>
+        <label><input type="radio" name="solar" value="si"> Sí</label><br>
+        <label><input type="radio" name="solar" value="no"> No</label><br>
+
+        <p>8. ¿Tienes alguna preocupación principal sobre tu piel?</p>
+        <textarea name="preocupacion" rows="3"></textarea>
+
+        <p>9. ¿Consumes suficiente agua al día?</p>
+        <label><input type="radio" name="agua" value="si"> Sí</label><br>
+        <label><input type="radio" name="agua" value="no"> No</label><br>
+
+        <p>10. ¿Duermes entre 7 y 8 horas diarias?</p>
+        <label><input type="radio" name="sueno" value="si"> Sí</label><br>
+        <label><input type="radio" name="sueno" value="no"> No</label><br>
+
+        <p>11. ¿Conoces tu tipo de piel?</p>
+        <label><input type="radio" name="conoce_tipo" value="si"> Sí</label><br>
+        <label><input type="radio" name="conoce_tipo" value="no"> No</label><br>
+
+        <p>12. ¿Qué te gustaría aprender sobre skincare?</p>
+        <textarea name="aprendizaje" rows="3"></textarea>
+
+        <button type="button" onclick="guardarRespuestas()">Guardar Respuestas</button>
+
+</form>
+
+<p id="mensaje"></p>
+
+<script>
+function guardarRespuestas(){
+
+    let data =
+        document.getElementById("nombre").value + "," +
+        document.getElementById("edad").value + "," +
+        document.getElementById("tipo").value;
+
+    fetch("respuestas.txt", {
+        method: "POST",
+        body: data
+    });
+
+    document.getElementById("mensaje").innerText = "Datos listos para guardar con Java.";
+}
+</script>
+
+</body>
+</html>
+
+        <button type="submit" class="boton">Enviar Encuesta</button>
+
+    </form>
+
+</body>
+</html>
